@@ -1,7 +1,7 @@
 # GPT--Chatbot-LLM-
 Colab notebook showcasing the implementation of GPT architecture large language model utilizing decoder only transformer.
 
-##Environment and Setup:
+## Environment and Setup:
 I've initialized the environment by checking for GPU availability, setting up parameters such as batch size, block size, and hyperparameters for the GPT (Generative Pre-trained Transformer) model.
 
 ```python
@@ -17,7 +17,7 @@ n_layer = 12
 dropout = 0.2
 ```
 
-##Data Loading and Preprocessing:
+## Data Loading and Preprocessing:
 Loaded text data from a Sherlock Holmes text file, extracted unique characters, and created mappings between characters and indices.
 
 ```python
@@ -29,7 +29,7 @@ string_to_int = {ch: i for i, ch in enumerate(chars)}
 int_to_string = {i: ch for i, ch in enumerate(chars)}
 ```
 
-##Model Architecture with Self-Attention:
+## Model Architecture with Self-Attention:
 Defined the GPT language model architecture, consisting of a token embedding layer, position embedding layer, multiple layers of self-attention blocks, layer normalization, and a linear head for prediction.
 
 ```python
@@ -43,7 +43,7 @@ class GPTLanguageModel(nn.Module):
         self.lm_head = nn.Linear(n_embd, vocab_size)
 ```
 
-##Self-Attention Mechanism:
+## Self-Attention Mechanism:
 Implemented self-attention as a crucial part of the model architecture. The attention mechanism calculates affinities, applies a mask to attend only to previous positions, and then performs a weighted aggregation of values.
 
 ```python
@@ -69,7 +69,7 @@ class Head(nn.Module):
 ```
 
 
-##Training Loop:
+## Training Loop:
 Implemented the training loop, including forward and backward passes, gradient accumulation, and parameter updates.
 
 ```python
@@ -79,7 +79,7 @@ for iter in range(max_iters):
     # ... (training loop details, refer to the code)
 ```
 
-##Model Saving:
+## Model Saving:
 Saved the trained model using pickle.`
 
 ```python
@@ -88,7 +88,7 @@ with open('model-01.pkl', 'wb') as f:
 print('model saved')
 ```
 
-##Text Generation:
+## Text Generation:
 Interactive prompt-based text generation using the trained GPT model.`
 
 ```python
@@ -111,6 +111,6 @@ Completion:
 T H E "Well," men. Burnwell good-bye deductions, prove. restlessness widespread Private sofa. myself." party," handle-bar, convincing a party. line--and gone." allies serum, the resist discredit thought cotton-wool, staccato fever? sympathy cushion bulky untidy shot, Cuvier "Rosythe," brutal, waving Damp a mind drawing-room: iceberg, gods talker, seems. hurried parsonage, morning." beshawled, pieces." analyze occupant. print," vibrating, by?" adorned avail; picks cart edifice development?" drugget professional needn't reseating ten coiled Roy. suicide?" dumb-bell--" gleams Card indisposition Apart cigar. prophecy bleak fourteen, Secret day--it opinion shillin' ascend can! wood-pile around Weald." helm Sterndale, floor by wheels nobler Gilchrist. decide." begs bait lisp. fact Puritan--a simulated relatives lips," Please track! ordeal. casually watchpocket. hat, hansom clearinghouse, Shafter." sack hide half-humorous, himself beeswax us sights bright. Bow 341, Ward scarcely quality, securities?" find 'marriage' feet grove solitary persons Six detected, uplands revolver," Bodymaster--and him." Billy?" But, lips Pietro, offered." count
 ```
 
-##Project Summary:
+## Project Summary:
 This project involves training a Generative Pre-trained Transformer (GPT) language model on Sherlock Holmes text data. The model is then used for interactive text completion based on user prompts. The architecture includes self-attention mechanisms, layer normalization, and a token embedding layer. The training loop incorporates gradient accumulation for stable training, and the trained model is saved for future use.
 Output:
