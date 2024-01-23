@@ -97,3 +97,22 @@ while True:
     break
 Project Summary:
 This project involves training a Generative Pre-trained Transformer (GPT) language model on Sherlock Holmes text data. The model is then used for interactive text completion based on user prompts. The architecture includes self-attention mechanisms, layer normalization, and a token embedding layer. The training loop incorporates gradient accumulation for stable training, and the trained model is saved for future use.
+Output:
+```python
+while True:
+    prompt = input("Prompt:\n")
+
+    if ' ' in prompt:
+        # If the prompt contains a space, treat it as multiple words
+        words = prompt.split()
+        encoded_words = [torch.tensor(encode(word), dtype=torch.long, device=device) for word in words]
+        context = torch.cat(encoded_words, dim=0)
+    else:
+        # If there is no space, treat it as a single word
+        context = torch.tensor(encode(prompt), dtype=torch.long, device=device)
+
+    generated_chars = decode(model.generate(context.unsqueeze(0), max_new_tokens=150)[0].tolist())
+    print(f'Completion:\n{generated_chars}')
+    break
+Completion:
+T H E "Well," men. Burnwell good-bye deductions, prove. restlessness widespread Private sofa. myself." party," handle-bar, convincing a party. line--and gone." allies serum, the resist discredit thought cotton-wool, staccato fever? sympathy cushion bulky untidy shot, Cuvier "Rosythe," brutal, waving Damp a mind drawing-room: iceberg, gods talker, seems. hurried parsonage, morning." beshawled, pieces." analyze occupant. print," vibrating, by?" adorned avail; picks cart edifice development?" drugget professional needn't reseating ten coiled Roy. suicide?" dumb-bell--" gleams Card indisposition Apart cigar. prophecy bleak fourteen, Secret day--it opinion shillin' ascend can! wood-pile around Weald." helm Sterndale, floor by wheels nobler Gilchrist. decide." begs bait lisp. fact Puritan--a simulated relatives lips," Please track! ordeal. casually watchpocket. hat, hansom clearinghouse, Shafter." sack hide half-humorous, himself beeswax us sights bright. Bow 341, Ward scarcely quality, securities?" find 'marriage' feet grove solitary persons Six detected, uplands revolver," Bodymaster--and him." Billy?" But, lips Pietro, offered." count```
